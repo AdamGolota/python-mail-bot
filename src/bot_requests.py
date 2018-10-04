@@ -7,4 +7,10 @@ def sendMessage(text) :
 
 
 def sendDocument(files) :
+    #try:
     bot.send_document(chat_id=chat_id, document=files, disable_notification=True)
+    # except Exception as e:
+    #     print(e)
+    #     pass
+    # finally:
+    #     sendDocument(files)

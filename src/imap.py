@@ -15,7 +15,11 @@ attachment_dir = os.path.join(os.getcwd(), 'attachments')
 def encoded_words_to_text(encoded_words):
     encoded_word_regex = r'=\?{1}.+\?{1}[B|Q]\?{1}(.+)\?{1}='
     encoding_regex = r'=\?{1}(.+)\?{1}([B|Q])\?{1}'
-    encoding_match = re.match(encoding_regex, encoded_words)
+    try:
+        encoding_match = re.match(encoding_regex, encoded_words)
+    except TypeError as e:
+        print(e)
+        return "_"
     if encoding_match :
         charset, encoding = encoding_match.groups()
     else :
@@ -47,7 +51,7 @@ def resend_attachments(msg):
             try:
                 with open(filePath, 'rb') as f:
                     bot_requests.sendDocument(f)
-            except TimeoutError as err:
+            except Exception as err:
                 print(err)
                 pass
             finally:
