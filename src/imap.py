@@ -44,9 +44,14 @@ def resend_attachments(msg):
             filePath = os.path.join(attachment_dir, fileName)
             with open(filePath,'wb') as f:   
                 f.write(part.get_payload(decode=True))
-            with open(filePath, 'rb') as f:
-                bot_requests.sendDocument(f)
-            os.remove(filePath)
+            try:
+                with open(filePath, 'rb') as f:
+                    bot_requests.sendDocument(f)
+            except TimeoutError as err:
+                print(err)
+                pass
+            finally:
+                os.remove(filePath)
         
 
 # Extracts text from a message
@@ -69,18 +74,21 @@ if config.idle :
         try: 
             responses = M.idle_check(timeout=600)
         except KeyboardInterrupt:
+            M.idle_done()
             break
         M.idle_done()
         if len(responses) > 0 and responses[0][1] == b'EXISTS' :
+            print('Message get')
             num = M.search('UNSEEN')[0]
             msg = M.fetch(num, 'RFC822')[num][b'RFC822']
             raw = email.message_from_bytes(msg)
             body = getBody(raw)
             decoded = body.decode('utf-8')
             if not decoded.isspace() :
-                bot_requests.sendMessage(decoded)    
+                bot_requests.sendMessage(decoded)
             resend_attachments(raw)
-else :
+            
+else:
     #Find recent emails
     nums = M.search('SINCE 03-Oct-2018')
 

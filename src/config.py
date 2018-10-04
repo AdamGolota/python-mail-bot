@@ -6,7 +6,7 @@ token = '688585334:AAGN0xWW-mluRfTICRaZ02JkNpiP-trdIQM'
 if debug :
     chat_id = '-1001182500001'
     mail = 'golota.adam@gmail.com'
-    password = 'Nasha0Malanka'
+    password = 'lulhseiqdcmfbgwv'
     host = 'imap.gmail.com'
 else :
     chat_id = '@tef_ta71'
