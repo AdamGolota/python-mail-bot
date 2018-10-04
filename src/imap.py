@@ -6,7 +6,7 @@ from imapclient import IMAPClient
 
 import bot_requests, config
 
-attachment_dir = 'C:/web_projects/python_mail_bot/attachments/'
+attachment_dir = os.path.join(os.getcwd(), 'attachments')
 
 
 
