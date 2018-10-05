@@ -1,0 +1,5 @@
+token = '688585334:AAGN0xWW-mluRfTICRaZ02JkNpiP-trdIQM'
+mail = 'kpi.tef.ta71@gmail.com'
+password = 'qvpkonjbrpldalak'
+chat_id = '@tef_ta71'
+debug_chat_id = '-1001182500001'

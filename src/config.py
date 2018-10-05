@@ -1,14 +1,13 @@
+import keys
 debug = False
 idle = True
 
-token = '688585334:AAGN0xWW-mluRfTICRaZ02JkNpiP-trdIQM'
-mail = 'kpi.tef.ta71@gmail.com'
-password = 'qvpkonjbrpldalak'
+token = keys.token
+mail = keys.mail
+password = keys.password
 host = 'imap.gmail.com'
 
 if debug :
-    chat_id = '-1001182500001'
-    mail = 'kpi.tef.ta71@gmail.com'
-    password = 'qvpkonjbrpldalak'
+    chat_id = keys.debug_chat_id
 else :
-    chat_id = '@tef_ta71'
+    chat_id = keys.chat_id
