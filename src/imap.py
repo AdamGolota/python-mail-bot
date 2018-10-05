@@ -76,7 +76,7 @@ if config.idle :
     while True:
         M.idle()
         try: 
-            responses = M.idle_check(timeout=600)
+            responses = M.idle_check(timeout=300)
         except KeyboardInterrupt:
             M.idle_done()
             break
@@ -104,4 +104,3 @@ else:
             bot_requests.sendMessage(decoded)    
         resend_attachments(raw)
 M.logout()
-M.shutdown()
